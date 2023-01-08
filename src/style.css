@@ -1,0 +1,35 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+small {
+  font-weight: 100;
+  top: 0;
+}
+div h5 {
+  font-size: 14px;
+}
+h1 a {
+  font-size: 30px;
+  color: blue;
+  text-decoration: none;
+}
+.degree {
+  text-align: left;
+}
+.emojis {
+  text-align: right;
+  font-size: 58px;
+}
+.line {
+  border-right: 1px solid gainsboro;
+}
+.center {
+  text-align: center;
+}
+
+.hour {
+  border: 2px solid gainsboro;
+}
+.dayweek {
+  border: 2px solid gainsboro;
+}
