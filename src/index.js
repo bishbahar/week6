@@ -20,13 +20,16 @@ let city = document.querySelector("#city");
 let currentdegree = document.querySelector("#degree");
 let description = document.querySelector("#description");
 let icon = document.querySelector("#sticker");
+let maxTemp = document.querySelector("#temp-max");
+let minTemp = document.querySelector("#temp-low");
+let speedWind = document.querySelector("#speed-wind");
+let humidity = document.querySelector("#humidity");
 
 //current
 function showWeather(response) {
   degree.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].description;
-  
 }
 
 function showPositin(position) {
@@ -53,6 +56,10 @@ serach.addEventListener("click", function (event) {
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
     icon.setAttribute("alt", response.data.weather[0].description);
+    maxTemp.innerHTML = Math.round(response.data.main.temp_max);
+    minTemp.innerHTML = Math.round(response.data.main.temp_min);
+    speedWind.innerHTML=Math.round(response.data.wind.speed);
+      humidity.innerHTML=response.data.main.humidity;
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.addEventListener("click", function () {
       let fahrenheitTemperature = Math.round(
