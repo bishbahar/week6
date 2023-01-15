@@ -6,20 +6,24 @@ small {
   font-weight: 100;
   top: 0;
   color: aliceblue;
+  display: block;
 }
+
 div h5 {
   color: aliceblue;
   font-size: 14px;
 }
-h1 a {
+h1{
   font-size: 30px;
   color: blue;
   text-decoration: none;
+  
 }
 .containers {
   border-radius: 10px;
   width:70%;
   margin: 50px auto;
+  margin-bottom: 0;
   padding: 10px;
   background: radial-gradient(
     circle at 12.3% 19.3%,
@@ -50,6 +54,20 @@ h1 a {
 }
 .center{
   color:aliceblue;
+}
+.source{
+  padding-left: 15%;
+}
+
+
+.units a{
+  position: relative;
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 15px;
+}
+.degree #degree{
+  font-size: 48px;
 }
 #city{
   color: aliceblue;
