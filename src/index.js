@@ -34,14 +34,10 @@ function showPositin(position) {
   axios.get(url).then(showWeather);
 }
 
-let current = document.querySelector("#current");
-current.addEventListener("click", function () {
-  navigator.geolocation.getCurrentPosition(showPositin);
-});
-
 //search city
 let serach = document.querySelector("#search");
-serach.addEventListener("click", function () {
+serach.addEventListener("click", function (event) {
+  event.preventDefault()
   let searchInput = document.querySelector("#serach-input");
 
   city.innerHTML = searchInput.value;
