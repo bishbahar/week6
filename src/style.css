@@ -17,6 +17,7 @@ h1{
   font-size: 30px;
   color: blue;
   text-decoration: none;
+  text-transform: capitalize;
   
 }
 .containers {
@@ -59,7 +60,10 @@ h1{
   padding-left: 15%;
 }
 
-
+span.units{
+position: relative;
+top:-20px;
+}
 .units a{
   position: relative;
   color: aliceblue;

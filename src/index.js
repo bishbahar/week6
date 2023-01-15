@@ -19,12 +19,14 @@ let apiKey = "a62bf47452d78ba41c221fd3cb539691";
 let city = document.querySelector("#city");
 let currentdegree = document.querySelector("#degree");
 let description = document.querySelector("#description");
+let icon = document.querySelector("#sticker");
 
 //current
 function showWeather(response) {
   degree.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
   description.innerHTML = response.data.weather[0].description;
+  
 }
 
 function showPositin(position) {
@@ -37,15 +39,20 @@ function showPositin(position) {
 //search city
 let serach = document.querySelector("#search");
 serach.addEventListener("click", function (event) {
-  event.preventDefault()
+  event.preventDefault();
   let searchInput = document.querySelector("#serach-input");
 
   city.innerHTML = searchInput.value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(function (response) {
-    console.log(response.data.weather[0].description);
+    console.log(response.data);
     currentdegree.innerHTML = Math.round(response.data.main.temp);
     description.innerHTML = response.data.weather[0].description;
+    icon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    icon.setAttribute("alt", response.data.weather[0].description);
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.addEventListener("click", function () {
       let fahrenheitTemperature = Math.round(
