@@ -26,6 +26,7 @@ h1{
   margin: 50px auto;
   margin-bottom: 0;
   padding: 10px;
+  min-width: 600px;
   background: radial-gradient(
     circle at 12.3% 19.3%,
     rgb(85, 88, 218) 0%,
@@ -35,6 +36,8 @@ h1{
 .degree {
   color: aliceblue;
   text-align: left;
+  position: fixed;
+  margin-left: 120px;
 }
 .emojis {
   text-align: right;
