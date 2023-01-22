@@ -25,6 +25,38 @@ let minTemp = document.querySelector("#temp-low");
 let speedWind = document.querySelector("#speed-wind");
 let humidity = document.querySelector("#humidity");
 
+function formatDay(timestamp){
+  let date=new Date(timestamp*1000);
+  let day=date.getDay();
+  let days=["Sun","Mon", "Tue","Wed","Thu","Fri","Sat"];
+
+  return days[day];
+}
+function showForecast(repsonse){
+let forecastDaily=response.data.daily;
+let forecast=document.querySelector(".forecast");
+forecastDaily.forEach(function (days){
+  forecast.innerHTML=`<div class="row">
+          <div class="col-2 forecast-frame">
+            <div class="day-forecast">${formatDay(days.dt)}</div>
+            <img src="https://openweathermap.org/img/wn/${days.weather[0].icon}@2x.png">
+            <div class="temp-forecat">
+              <span class="max-temp">${Math.round(days.temp.max)}°</span>
+              <span class="min-temp">${Math.round(days.temp.min)}°</span>
+            </div>
+          </div>
+        </div>
+        `;
+})
+}
+
+function getForecast(coordinates){
+  let url = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  console.log(url);
+  axios.get(url).then(showForecast);
+  
+}
+
 //current
 function showWeather(response) {
   degree.innerHTML = Math.round(response.data.main.temp);
@@ -38,6 +70,7 @@ function showPositin(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(url).then(showWeather);
 }
+
 
 //search city
 let serach = document.querySelector("#search");
@@ -59,7 +92,7 @@ serach.addEventListener("click", function (event) {
     maxTemp.innerHTML = Math.round(response.data.main.temp_max);
     minTemp.innerHTML = Math.round(response.data.main.temp_min);
     speedWind.innerHTML=Math.round(response.data.wind.speed);
-      humidity.innerHTML=response.data.main.humidity;
+    humidity.innerHTML=response.data.main.humidity;
     let fahrenheit = document.querySelector("#fahrenheit");
     fahrenheit.addEventListener("click", function () {
       let fahrenheitTemperature = Math.round(
@@ -72,5 +105,7 @@ serach.addEventListener("click", function (event) {
     celsius.addEventListener("click", function () {
       currentdegree.innerHTML = Math.round(response.data.main.temp);
     });
+
+    getForecast(response.data.coord);
   });
 });

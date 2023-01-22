@@ -36,8 +36,8 @@ h1{
 .degree {
   color: aliceblue;
   text-align: left;
-  position: fixed;
-  margin-left: 120px;
+  position: relative;
+  margin-left: 40px;
 }
 .emojis {
   text-align: right;
